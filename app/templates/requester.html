@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FastAid - Request Help</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/common.css">
+    <link rel="stylesheet" href="/static/css/requester.css">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js"></script>
+    <script src="https://unpkg.com/@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body class="has-nav" data-username="{{ username }}" data-token="{{token}}" data-can-help="{{canHelp}}">
+    <div class="background-animation"></div>
+    <header class="site-header">
+        <div class="header-content">
+            <h1><i class="fas fa-hands-helping"></i> FastAid</h1>
+            <div class="header-right">
+                <nav>
+                    <ul>
+                        <li><a href="requester.html?token={{token}}" class="nav-link" data-page="requester" data-i18n="nav_dashboard">Dashboard</a></li>
+                        <li><a href="requester-history.html?token={{token}}" class="nav-link" data-page="requester-history" data-i18n="nav_history">History</a></li>
+                        {{#if canHelp}}
+                        <li><a href="helper.html?token={{token}}" class="nav-link" data-page="helper" data-i18n="nav_provide_help">Provide Help</a></li>
+                        {{/if}}
+                    </ul>
+                </nav>
+                <div class="lang-switch">
+                    <button id="langEn" type="button">EN</button>
+                    <button id="langFr" type="button">FR</button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <main>
+            <h2><span data-i18n="welcome_requester">Welcome</span>, {{ username }}</h2>
+            <div id="notification" class="notification hidden"></div>
+
+            <div id="activeRequestPanel" class="card hidden">
+                <h3 data-i18n="active_request">Active Request</h3>
+                <div id="activeRequestDetails"></div>
+            </div>
+
+            <div id="newRequestFlow" class="card">
+                <div id="stepCategory" class="flow-step">
+                    <h2 data-i18n="select_category">Select an emergency category</h2>
+                    <div class="category-grid">
+                        <div class="category-card" data-category="medical">
+                            <i class="fas fa-heartbeat"></i>
+                            <h3 data-i18n="cat_medical">Medical Emergency</h3>
+                        </div>
+                        <div class="category-card" data-category="vehicle">
+                            <i class="fas fa-car"></i>
+                            <h3 data-i18n="cat_vehicle">Vehicle Emergency</h3>
+                        </div>
+                        <div class="category-card" data-category="home">
+                            <i class="fas fa-home"></i>
+                            <h3 data-i18n="cat_home">Home Emergency</h3>
+                        </div>
+                        <div class="category-card" data-category="pet">
+                            <i class="fas fa-paw"></i>
+                            <h3 data-i18n="cat_pet">Pet Emergency</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="stepSubtype" class="flow-step hidden">
+                    <h2 data-i18n="select_subtype">Select the emergency type</h2>
+                    <div id="subtypeGrid" class="category-grid"></div>
+                    <div class="action-bar">
+                        <button type="button" id="backToCategory" class="secondary-btn" data-i18n="back">Back</button>
+                    </div>
+                </div>
+
+                <div id="stepLocation" class="flow-step hidden">
+                    <div id="selectedSummary" class="selected-info"></div>
+                    <p data-i18n="confirm_location">Confirm your location on the map, then submit your request.</p>
+                    <div id="map-container">
+                        <div id="map" data-mapboxtoken="{{ mapboxToken }}"></div>
+                        <div id="geocoder" class="geocoder"></div>
+                    </div>
+                    <div class="action-bar">
+                        <button type="button" id="backFromLocation" class="secondary-btn" data-i18n="back">Back</button>
+                        <button type="button" id="submitRequestBtn" class="primary-btn">
+                            <i class="fas fa-bell"></i> <span data-i18n="request_help_now">Request Help Now</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <p>© 2025 FastAid | <span data-i18n="footer">Built with care by Alexandre Nasrallah</span></p>
+        </footer>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/static/js/i18n.js"></script>
+    <script src="/static/js/requester.js" defer></script>
+    <script src="/static/js/nav.js" defer></script>
+</body>
+</html>
