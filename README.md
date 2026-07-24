@@ -26,70 +26,22 @@ Welcome to **FastAid**, a volunteer-based platform that connects people experien
 
 ---
 
-## 🛠️ **Local Setup**
-
-### Prerequisites
-
-- Node.js
-- MongoDB running locally
-- Mapbox access token
-
-### Installation
-
-1. Open a terminal in the `FastAid/app` folder
-2. Install dependencies:
-
-```bash
-npm install
-```
-
-3. Copy the environment file and add your values:
-
-```bash
-copy .env.example .env
-```
-
-Set `MAPBOX_TOKEN` and `JWT_SECRET` in `.env`.
-
-4. Seed the demonstration database:
-
-```bash
-npm run seed
-```
-
-5. Start the server:
-
-```bash
-npm start
-```
-
-6. Open **http://localhost:8001**
-
----
-
 ## 👤 **Demonstration Accounts**
 
-| Username | Password | Role |
-|----------|----------|------|
-| `admin` | `admin` | Administrator |
-| `requester` | `demo123` | Requester only |
-| `paramedic` | `demo123` | Paramedic helper |
-| `mechanic` | `demo123` | Mechanic helper |
-| `plumber` | `demo123` | Plumber helper |
-| `electrician` | `demo123` | Electrician helper |
-| `locksmith` | `demo123` | Locksmith helper |
-| `heating` | `demo123` | Heating technician helper |
-| `vet` | `demo123` | Veterinarian helper |
-| `dualuser` | `demo123` | Requester + mechanic helper |
+| Username      | Password  | Role                        |
+| ------------- | --------- | --------------------------- |
+| `admin`       | `admin`   | Administrator               |
+| `requester`   | `demo123` | Requester only              |
+| `paramedic`   | `demo123` | Paramedic helper            |
+| `mechanic`    | `demo123` | Mechanic helper             |
+| `plumber`     | `demo123` | Plumber helper              |
+| `electrician` | `demo123` | Electrician helper          |
+| `locksmith`   | `demo123` | Locksmith helper            |
+| `heating`     | `demo123` | Heating technician helper   |
+| `vet`         | `demo123` | Veterinarian helper         |
+| `dualuser`    | `demo123` | Requester + mechanic helper |
 
 All seeded helpers are located in downtown Montreal so the 2 km matching demo works immediately.
-
----
-
-## 📍 **Port & Database**
-
-- **Server port:** `8001` (QuickAid uses `8000`)
-- **MongoDB database:** `fastaid_db`
 
 ---
 
