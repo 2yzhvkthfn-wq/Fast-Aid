@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FastAid MTL</title>
+    <link rel="stylesheet" href="static/css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+    <div class="background-animation"></div>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-ambulance"></i> FastAid MTL</h1>
+            <p>Emergency medical services</p>
+        </header>
+        <main>
+            <section class="overview">
+                <h2>Fast response when you need care</h2>
+                <p>FastAid Montreal connects you with nearby paramedics in real time. Sign in as a patient to request urgent help, or as a paramedic to respond.</p>
+            </section>
+            <section class="login-section">
+                <div class="role-toggle">
+                    <button id="patientToggle" class="active">Patient</button>
+                    <button id="paramedicToggle">Paramedic</button>
+                </div>
+                <form id="loginForm" class="login-form">
+                    <h3>Sign in</h3>
+                    <div class="form-group">
+                        <label for="username"><i class="fas fa-user"></i></label>
+                        <input type="text" id="username" name="username" placeholder="Username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password"><i class="fas fa-lock"></i></label>
+                        <input type="password" id="password" name="password" placeholder="Password" required>
+                    </div>
+                    <button type="submit" class="login-btn">Sign in</button>
+                </form>
+            </section>
+        </main>
+        <footer>
+            <p>© 2025 FastAid Montreal | Built with care by <strong>Alexandre Nasrallah</strong></p>
+        </footer>
+    </div>
+    <script src="static/js/index.js"></script>
+</body>
+</html>

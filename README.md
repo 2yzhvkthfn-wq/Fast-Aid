@@ -1,48 +1,37 @@
-# FastAid 🚑
+# FastAid MTL 🚑
 
-Welcome to **FastAid**, a volunteer-based platform that connects people experiencing urgent problems with nearby qualified professionals in the Montreal area. With real-time communication powered by WebSockets, FastAid delivers immediate alerts to matching helpers within 2 km.
+Welcome to FastAid Montreal, an Emergency Medical Service (EMS) full-stack app designed to connect people in need of urgent medical help with nearby paramedics in the Montreal area. With real-time communication powered by WebSockets, FastAid MTL ensures swift response times by delivering immediate alerts and updates to both patients and paramedics.
+
+## 🎬 **Demo Video**
+👉 **[Watch the demo video here !!](https://www.youtube.com/watch?v=V26TlUd5xT4)** 🌟 
 
 ---
 
 ## 💻 **Tech Stack**
 
-- **Node.js & Express.js** (Backend)
-- **MongoDB & Mongoose** (Database)
-- **Socket.IO** (Real-Time Communication)
-- **MapBox GL JS** (Mapping & Geolocation)
-- **JWT** (Authentication)
-- **JavaScript, HTML & CSS** (Frontend)
+- **Node.js & Express.js** (Backend) 🛠️
+- **MongoDB & Mongoose** (Database & ORM) 📑
+- **Socket.IO** (Real-Time Communication) 🆘
+- **MapBox GL JS** (Mapping & Geolocation) 📍
+- **JWT - JSON Web Token** (Authentication) 🔐
+- **JavaScript, HTML & CSS** (Frontend) 🎨
 
 ---
 
-## 🚀 **Features**
+## 🚀 **Features**  
 
-- **Multi-category urgent help** — Medical, vehicle, home, and pet emergencies
-- **Profession-based matching** — Helpers only receive relevant requests within 2 km
-- **Real-time notifications** — Instant alerts and live status updates
-- **Bilingual interface** — English and French
-- **Admin dashboard** — Manage users, requests, and view the activity map
-- **Separate database** — Uses `fastaid_db` (independent from QuickAid)
+- **Real-time Alerts**  
+  Notifications are sent instantly using **WebSockets** to alert patients and paramedics.  
 
----
+- **Location-based Emergency**  
+  Geospatial indexes in **MongoDB** and interactive **MapBox** maps (autocomplete geocoder, markers, etc.) track user locations for nearby emergencies, with paramedics being alerted only within a 2 km range.  
 
-## 👤 **Demonstration Accounts**
+- **Authentication & Security**  
+  **JWT** for secure authentication and **bcrypt** for password hashing.  
 
-| Username      | Password  | Role                        |
-| ------------- | --------- | --------------------------- |
-| `admin`       | `admin`   | Administrator               |
-| `requester`   | `demo123` | Requester only              |
-| `paramedic`   | `demo123` | Paramedic helper            |
-| `mechanic`    | `demo123` | Mechanic helper             |
-| `plumber`     | `demo123` | Plumber helper              |
-| `electrician` | `demo123` | Electrician helper          |
-| `locksmith`   | `demo123` | Locksmith helper            |
-| `heating`     | `demo123` | Heating technician helper   |
-| `vet`         | `demo123` | Veterinarian helper         |
-| `dualuser`    | `demo123` | Requester + mechanic helper |
+- **Heat Map**  
+  Displays a heat map to show the density and patterns of pending and accepted requests.  
 
-All seeded helpers are located in downtown Montreal so the 2 km matching demo works immediately.
+- **MongoDB**  
+  Stores emergency information and tracks patient and paramedic history.
 
----
-
-Built with care by **Alexandre Nasrallah**

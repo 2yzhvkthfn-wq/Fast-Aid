@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency history · FastAid MTL</title>
+    <link rel="stylesheet" href="/static/css/patient-history.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+    <div class="background-animation"></div>
+    <header>
+        <div class="header-content">
+            <h1><i class="fas fa-ambulance"></i> FastAid MTL</h1>
+            <nav>
+                <ul>
+                    <li><a href="patient.html?token={{token}}" class="nav-link" data-page="patient">Dashboard</a></li>
+                    <li><a href="patient-history.html?token={{token}}" class="nav-link" data-page="patient-history">Emergency history</a></li>
+                    <li><a href="emergencies.html?token={{token}}" class="nav-link" data-page="emergencies">Emergency map</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <main>
+            <h2><i class="fas fa-file-medical"></i> Your emergency history</h2>
+            <div class="history-table-container">
+                <table class="history-table">
+                    <thead>
+                        <tr>
+                            <th><i class="fas fa-map-marker-alt"></i> Address</th>
+                            <th><i class="fas fa-clock"></i> Request Time</th>
+                            <th><i class="fas fa-hourglass-half"></i> Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each patientHistory}}
+                        <tr>
+                            <td>{{ location.address }}</td>
+                            <td>{{ requestTime }}</td>
+                            <td>
+                                <span class="status-badge status-{{ status }}">
+                                    {{ status }}
+                                </span>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </main>
+        <footer>
+            <p>© 2025 FastAid Montreal | Built with care by <strong>Alexandre Nasrallah</strong></p>
+        </footer>
+    </div>
+    <script>
+        // Handle active nav link
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentPage = window.location.pathname.split('/').pop().split('.')[0];
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                if (link.dataset.page === currentPage) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

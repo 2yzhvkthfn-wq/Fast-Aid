@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency map · FastAid MTL</title>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js"></script>
+    <link rel="stylesheet" href="/static/css/requests.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+    <div class="background-animation"></div>
+    <header>
+        <div class="header-content">
+            <h1><i class="fas fa-ambulance"></i> FastAid MTL</h1>
+            <nav>
+                <ul>
+                    <li><a href="{{role}}.html?token={{token}}" class="nav-link" data-page="{{role}}">Dashboard</a></li>
+                    <li><a href="{{role}}-history.html?token={{token}}" class="nav-link" data-page="{{role}}-history">Emergency history</a></li>
+                    <li><a href="emergencies.html?token={{token}}" class="nav-link" data-page="emergencies">Emergency map</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <main>
+            <section class="map-info">
+                <h2><i class="fas fa-exclamation-circle"></i> Emergency map</h2>
+                <p>
+                    See emergencies across Montreal on a live map. It updates as requests change, so you can tell where help is needed most.<br><br>
+                    <strong>Red markers</strong> are pending emergencies that still need a response.<br>
+                    <strong>Green markers</strong> are accepted emergencies, where a paramedic is already on the way.<br><br>
+                    Check the map often so help can get there sooner.
+                </p>
+            </section>
+
+            <div id="map" data-mapboxtoken="{{ mapboxToken }}"></div>
+        </main>
+        <footer>
+            <p>© 2025 FastAid Montreal | Built with care by <strong>Alexandre Nasrallah</strong></p>
+        </footer>
+    </div>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/static/js/requests.js" defer></script>
+    <script>
+        // Handle active nav link
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentPage = window.location.pathname.split('/').pop().split('.')[0];
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                if (link.dataset.page === currentPage) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

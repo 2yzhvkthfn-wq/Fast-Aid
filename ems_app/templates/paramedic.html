@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paramedic dashboard · FastAid MTL</title>
+    <link rel="stylesheet" href="static/css/paramedic.css">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body data-username="{{ username }}">
+    <div class="background-animation"></div>
+    <header>
+        <div class="header-content">
+            <h1><i class="fas fa-ambulance"></i> FastAid MTL</h1>
+            <nav>
+                <ul>
+                    <li><a href="paramedic.html?token={{token}}" class="nav-link" data-page="paramedic">Dashboard</a></li>
+                    <li><a href="paramedic-history.html?token={{token}}" class="nav-link" data-page="paramedic-history">Emergency history</a></li>
+                    <li><a href="emergencies.html?token={{token}}" class="nav-link" data-page="emergencies">Emergency map</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <main>
+            <h2>Welcome, Paramedic {{ username }}</h2>
+            <p class="lead">New requests show up here, with the patient’s location on the map.</p>
+            <div id="notification" class="notification"><i class="fas fa-bell" style="color: #087a72;"></i> Waiting for requests.</div>
+            <div class="dashboard-grid">
+                <div class="map-section">
+                    <h3><i class="fas fa-globe"></i> Emergency map</h3>
+                    <div id="map-container">
+                        <div id="map" data-mapboxtoken="{{ mapboxToken }}"></div>
+                    </div>
+                </div>
+                <div class="requests-section">
+                    <h3><i class="fas fa-clipboard"></i> Incoming requests</h3>
+                    <table id="emergency-requests">
+                        <thead>
+                            <tr>
+                                <th>Patient Name</th>
+                                <th>Location</th>
+                                <th>Time</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Emergency requests will be dynamically added here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <p>© 2025 FastAid Montreal | Built with care by <strong>Alexandre Nasrallah</strong></p>
+        </footer>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/static/js/paramedic.js" defer></script>
+
+    <script>
+        // Handle active nav link
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentPage = window.location.pathname.split('/').pop().split('.')[0];
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                if (link.dataset.page === currentPage) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+    
+</body>
+</html>
+
+
